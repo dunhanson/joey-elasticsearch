@@ -1,5 +1,6 @@
 package cn.joey.elasticsearch.utils;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import org.apache.http.HttpHost;
 import org.elasticsearch.action.search.SearchRequest;
@@ -9,6 +10,8 @@ import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestClientBuilder;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
@@ -19,6 +22,7 @@ import java.util.*;
  * @date 2019-04-23
  */
 public class ElasticsearchUtils {
+    private static Logger logger = LoggerFactory.getLogger(ElasticsearchUtils.class);
     private static RestHighLevelClient client;
     private static Map<String, String> indicesMap = new HashMap<>();
 
@@ -80,6 +84,8 @@ public class ElasticsearchUtils {
             SearchRequest request = new SearchRequest();
             request.indices(indicesMap.get(clazz.getSimpleName()));
             request.source(builder);
+
+            logger.info(new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(builder.toString()));
 
             //查询返回结果
             SearchResponse response = client.search(request, RequestOptions.DEFAULT);
