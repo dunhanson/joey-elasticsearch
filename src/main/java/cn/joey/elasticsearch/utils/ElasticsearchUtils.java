@@ -30,9 +30,13 @@ public class ElasticsearchUtils {
      * 初始化资源
      */
     static {
+
+        //获取配置文件
+        String configFileName = CommonUtils.getConfigFileName();
+
         try(InputStream in = Thread.currentThread()
                 .getContextClassLoader()
-                .getResourceAsStream("joey-elasticsearch.properties")) {
+                .getResourceAsStream(configFileName)) {
 
             //加载es配置文件
             Properties properties = new Properties();
