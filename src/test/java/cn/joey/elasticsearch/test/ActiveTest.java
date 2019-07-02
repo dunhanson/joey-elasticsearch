@@ -1,7 +1,7 @@
 package cn.joey.elasticsearch.test;
 
 import cn.joey.elasticsearch.utils.CommonUtils;
-import cn.joey.elasticsearch.utils.constant.DefaultConstant;
+import cn.joey.elasticsearch.constant.DefaultConstant;
 
 /**
  * @author dunhanson

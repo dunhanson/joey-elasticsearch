@@ -1,6 +1,6 @@
 package cn.joey.elasticsearch.utils;
 
-import cn.joey.elasticsearch.utils.constant.DefaultConstant;
+import cn.joey.elasticsearch.constant.DefaultConstant;
 import org.apache.commons.lang3.StringUtils;
 
 /**

@@ -1,4 +1,4 @@
-package cn.joey.elasticsearch.utils.constant;
+package cn.joey.elasticsearch.constant;
 
 public class DefaultConstant {
 
