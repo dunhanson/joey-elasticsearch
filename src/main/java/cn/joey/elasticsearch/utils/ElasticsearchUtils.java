@@ -11,6 +11,7 @@ import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestClientBuilder;
 import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -106,7 +107,7 @@ public class ElasticsearchUtils {
             response.getHits().forEach(hit->{
                 result.add(gson.fromJson(hit.getSourceAsString(), clazz));
             });
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return result;
@@ -118,7 +119,7 @@ public class ElasticsearchUtils {
     public static void close() {
         try {
             Store.getInstance().getClient().close();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
